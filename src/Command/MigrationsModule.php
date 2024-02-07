@@ -2,7 +2,7 @@
 
 namespace ProcessWire\Migrations\Command;
 
-use Migrations;
+use ProcessWire\Migrations;
 
 trait MigrationsModule
 {
