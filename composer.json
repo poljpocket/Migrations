@@ -17,14 +17,15 @@
       "name": "Benjamin Milde",
       "homepage": "https://kobrakai.de/",
       "role": "Developer"
+    },
+    {
+      "name": "Julian Pollak",
+      "homepage": "https://poljpocket.ch/",
+      "role": "Developer"
     }
   ],
   "require": {
-    "wireframe-framework/processwire-composer-installer": "^1.1",
     "symfony/console": "^3.2"
-  },
-  "require-dev": {
-    "lostkobrakai/conveyor": "^0.1.3"
   },
   "autoload": {
     "psr-4": {
