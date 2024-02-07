@@ -1,6 +1,7 @@
 <?php namespace ProcessWire;
 use DirectoryIterator;
 use PDO;
+use PDOStatement;
 
 /**
  * Migrations
@@ -227,7 +228,7 @@ class Migrations extends WireData implements Module {
 	 * @param $what
 	 * @param $available
 	 * @return MigrationfilesArray
-	 * @throws \WireException|\ProcessWire\WireException
+	 * @throws WireException
 	 */
 	protected function selectMigrations ($what, $available)
 	{

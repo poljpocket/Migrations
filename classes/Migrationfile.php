@@ -25,7 +25,8 @@ class Migrationfile extends WireData
 	 */
 	protected $statics;
 
-	public function __construct() {
+    /** @noinspection PhpMissingParentConstructorInspection */
+    public function __construct() {
 		$this->path = '';
 		$this->filename = '';
 		$this->shortname = '';
