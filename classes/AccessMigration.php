@@ -1,4 +1,4 @@
-<?php
+<?php namespace ProcessWire;
 
 abstract class AccessMigration extends Migration{
 
@@ -78,7 +78,7 @@ abstract class AccessMigration extends Migration{
 							$types = ['view', 'edit', 'create', 'add'];
 							break;
 						default:
-							continue;
+							continue 2;
 					}
 
 					foreach ($types as $type) {

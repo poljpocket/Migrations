@@ -1,4 +1,6 @@
-<?php
+<?php namespace ProcessWire;
+use Exception;
+
 /**
  * Migrations
  * 
@@ -120,7 +122,10 @@ class ProcessMigrations extends Process {
 		return $button;
 	}
 
-	public function ___executeExecute() {
+    /**
+     * @return false|void
+     */
+    public function ___executeExecute() {
 		$file = $this->evaluateID();
 		try{
 			$this->m()->migrate($file);
@@ -131,7 +136,10 @@ class ProcessMigrations extends Process {
 		$this->session->redirect($this->page->url);
 	}
 
-	public function ___executeRevoke() {
+    /**
+     * @return false|void
+     */
+    public function ___executeRevoke() {
 		$file = $this->evaluateID();
 		try{
 			$this->m()->rollback($file);
@@ -142,7 +150,10 @@ class ProcessMigrations extends Process {
 		$this->session->redirect($this->page->url);
 	}
 
-	protected function evaluateID() {
+    /**
+     * @return string|void
+     */
+    protected function evaluateID() {
 		if(!$this->input->get->id) $this->session->redirect($this->page->url);
 
 		$id = $this->input->get->text("id");
@@ -195,6 +206,7 @@ class ProcessMigrations extends Process {
 			$this->session->redirect($this->page->url);
 		}
 
+        /** @var InputfieldForm $form */
 		$form = $this->wire('modules')->get('InputfieldForm');
 		$form->attr('action', '.');
 

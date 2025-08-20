@@ -1,4 +1,4 @@
-<?php
+<?php namespace ProcessWire;
 
 abstract class Migration extends Wire{
 

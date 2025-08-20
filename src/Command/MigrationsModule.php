@@ -2,7 +2,7 @@
 
 namespace ProcessWire\Migrations\Command;
 
-use Migrations;
+use ProcessWire\Migrations;
 
 trait MigrationsModule
 {
@@ -24,7 +24,7 @@ trait MigrationsModule
 	 */
 	public function isEnabled ()
 	{
-		if($this->migrations instanceof \Migrations || $this->migrations instanceof \ProcessWire\Migrations){
+		if($this->migrations instanceof Migrations){
 			return true;
 		}
 		return false;

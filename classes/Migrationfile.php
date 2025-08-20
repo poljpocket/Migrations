@@ -1,4 +1,7 @@
-<?php
+<?php namespace ProcessWire;
+
+use ReflectionClass;
+use SplFileInfo;
 
 /**
  * Class Migrationfile
@@ -22,7 +25,8 @@ class Migrationfile extends WireData
 	 */
 	protected $statics;
 
-	public function __construct() {
+    /** @noinspection PhpMissingParentConstructorInspection */
+    public function __construct() {
 		$this->path = '';
 		$this->filename = '';
 		$this->shortname = '';
@@ -91,7 +95,7 @@ class Migrationfile extends WireData
 	{
 		if(is_null($this->statics)) {
 			include_once($this->path);
-			$class = new ReflectionClass($this->classname);
+			$class = new ReflectionClass('ProcessWire\\' . $this->classname);
 			$this->statics = $class->getStaticProperties();
 			$type = $class->getParentClass()->getShortName();
 			if($type === 'Migration') $type = 'DefaultMigration';

@@ -8,8 +8,8 @@
     "autoload": false,
     "singular": false,
     "requires": [
-        "PHP>=5.4.0",
-        "ProcessWire>=2.6.14",
+        "PHP>=8.0.0",
+        "ProcessWire>=3.0.0",
         "Migrations"
     ],
     "page": {

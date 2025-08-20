@@ -1,4 +1,8 @@
-<?php
+<?php namespace ProcessWire;
+use DirectoryIterator;
+use PDO;
+use PDOStatement;
+
 /**
  * Migrations
  * 
@@ -47,10 +51,10 @@ class Migrations extends WireData implements Module {
 	 * @throws WireException
 	 */
 	public function createNew($type = 'default', array $options = []) {
-		$base = $this->path . "templates/$type.php.inc"; // Try custom templates first
+		$base = $this->path . "templates/$type.php.template"; // Try custom templates first
 
 		if(!is_file($base))
-			$base = __DIR__ . "/templates/$type.php.inc";
+			$base = __DIR__ . "/templates/$type.php.template";
 
 		if(!is_file($base))
 			throw new WireException('Not a valid template for creation ' . $type);
@@ -224,7 +228,7 @@ class Migrations extends WireData implements Module {
 	 * @param $what
 	 * @param $available
 	 * @return MigrationfilesArray
-	 * @throws \WireException|\ProcessWire\WireException
+	 * @throws WireException
 	 */
 	protected function selectMigrations ($what, $available)
 	{
@@ -280,12 +284,12 @@ class Migrations extends WireData implements Module {
 	 */
 	private function runAction(Migrationfile $file, $function, $stmt) {
 		include_once($file->path);
-		$classname = $file->classname;
+		$classname = 'ProcessWire\\' . $file->classname;
 
 		$migration = new $classname();
 		$migration->$function();
 
-		$stmt->bindParam(':class', $classname);
+		$stmt->bindValue(':class', $file->classname);
 		$stmt->execute();
 	}
 
